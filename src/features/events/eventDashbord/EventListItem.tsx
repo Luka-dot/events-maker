@@ -3,7 +3,30 @@ import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
 import userImg from '../../../assests/user.png';
 import EventListAtendee from './EventListAttendee';
 
-export default function EventListItem() {
+interface attendeeData {
+    id: string;
+    name: string;
+    photoURL: string;
+}
+
+interface eventData {
+    id: string; 
+    title: string; 
+    date: string; 
+    category: string; 
+    description: string; 
+    city: string; 
+    venue: string; 
+    hostedBy: string; 
+    hostPhotoURL: string; 
+    attendees: attendeeData[]
+}
+
+interface singleEventProp {
+    singleEvent: eventData
+}
+
+export default function EventListItem(props: singleEventProp) {
 
     return (
         <Segment.Group>
