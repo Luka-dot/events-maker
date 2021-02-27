@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
-import userImg from '../../../assests/user.png';
 import EventListAtendee from './EventListAttendee';
 
 interface attendeeData {
@@ -27,17 +26,18 @@ interface singleEventProp {
 }
 
 export default function EventListItem(props: singleEventProp) {
-
+    const {...event}: eventData = props.singleEvent              //  const {event}: eventevent = props.singleEvent
+ 
     return (
         <Segment.Group>
             <Segment>
                 <Item.Group>
                     <Item>
-                        <Item.Image size='tiny' circular src={userImg} alt='user-image' /> 
+                        <Item.Image size='tiny' circular src={event.hostPhotoURL} alt='user-image' /> 
                         <Item.Content>
-                            <Item.Header content='Event Title' />
+                            <Item.Header content={event.title} />
                             <Item.Description>
-                                Hosted by Bob
+                                Hosted by{` ${event.hostedBy}`}
                             </Item.Description>
                         </Item.Content>
                     </Item>
@@ -45,20 +45,17 @@ export default function EventListItem(props: singleEventProp) {
             </Segment>
             <Segment>
                 <span>
-                    <Icon name='clock' size='large' color='purple' />
-                    <Icon name='marker' size='large' color='red' />
+                    <Icon name='clock' size='large' color='purple' />{event.date}
+                    <Icon name='marker' size='large' color='red' />{event.venue}
                 </span>
             </Segment>
             <Segment secondary>
                 <List horizontal >
-                    <EventListAtendee />
-                    <EventListAtendee />
-                    <EventListAtendee />
-                    <EventListAtendee />
+                    {event.attendees.map((attendee) => <EventListAtendee key={attendee.id} attendeDetails={attendee}/>)}
                 </List>
             </Segment>
             <Segment clearing>
-                <span>Description of Event</span>
+                <span>{event.description}</span>
                 <Button color='teal' floated='right' content='View' />
             </Segment>
         </Segment.Group>
