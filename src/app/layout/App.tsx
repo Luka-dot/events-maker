@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import EventDashboard from '../../features/events/eventDashbord/EventDashboard';
+import EventDetailedPage from '../../features/events/eventDetailed/EventDetailedPage';
+import EventForm from '../../features/events/eventForm/EventForm';
 import NavBar from '../../features/events/nav/NavBar';
+import HomePage from '../../features/home/HomePage';
 
 interface attendeeData {
   id: string;
@@ -40,10 +44,15 @@ function App() {
     <>
       <NavBar setFormOpen={handleCreateFormOpen} formOpen={formOpen} />
       <Container className='main'>
-        <EventDashboard formOpen={formOpen} setFormOpen={setFormOpen} selectEvent={handleSelectEvent} selectedEvent={selectedEvent} />
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/events' component={EventDashboard} />
+        <Route path='/events/:id' component={EventDetailedPage} />
+        <Route path='/createEvent' component={EventForm} />
       </Container>
     </>
   );
 }
 
 export default App;
+
+//  <EventDashboard formOpen={formOpen} setFormOpen={setFormOpen} selectEvent={handleSelectEvent} selectedEvent={selectedEvent} />
