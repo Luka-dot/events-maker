@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Image, Menu } from 'semantic-ui-react';
 
 interface signinProps {
-    setAuthenticated: Function;
+    signOut: Function;
 };
 
-export default function SigninMenu({setAuthenticated}: signinProps) {
+export default function SigninMenu({signOut}: signinProps) {
 
     return (
         <Menu.Item position='right'>
@@ -15,7 +15,7 @@ export default function SigninMenu({setAuthenticated}: signinProps) {
                 <Dropdown.Menu>
                     <Dropdown.Item as={Link} to='/createEvent' text='Create Event' icon='plus' />
                     <Dropdown.Item text='My Profile' icon='user' />
-                    <Dropdown.Item text='Sign Out' icon='power' onClick={() => setAuthenticated(false)} />
+                    <Dropdown.Item text='Sign Out' icon='power' onClick={() => signOut()} />
                 </Dropdown.Menu>
             </Dropdown>
         </Menu.Item>
