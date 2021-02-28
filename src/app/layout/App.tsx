@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 import EventDashboard from '../../features/events/eventDashbord/EventDashboard';
 import EventDetailedPage from '../../features/events/eventDetailed/EventDetailedPage';
 import EventForm from '../../features/events/eventForm/EventForm';
-import NavBar from '../../features/events/nav/NavBar';
+import NavBar from '../../features/nav/NavBar';
 import HomePage from '../../features/home/HomePage';
 
 interface attendeeData {
