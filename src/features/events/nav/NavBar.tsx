@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { Button, Container, Icon, Menu } from 'semantic-ui-react';
 
 interface navBarProps {
@@ -10,13 +11,13 @@ export default function NavBar(props: navBarProps) {
     return(
         <Menu inverted fixed='top'>
             <Container >
-                <Menu.Item header>
+                <Menu.Item as={NavLink} exact to='/' header>
                    <Icon name="world" size="large" color="orange" />
                     Events-Maker
                 </Menu.Item>
-                <Menu.Item name="events" />
-                    <Menu.Item>
-                        <Button positive inverted content='Create Event' onClick={() => props.setFormOpen(!props.formOpen)} />
+                <Menu.Item as={NavLink} to='/events' name="events" />
+                    <Menu.Item as={NavLink} to='/createEvent' >
+                        <Button positive inverted content='Create Event' />
                     </Menu.Item>
                     <Menu.Item position="right" >
                         <Button basic inverted content='Login' />
