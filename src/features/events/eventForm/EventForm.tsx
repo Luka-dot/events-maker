@@ -1,13 +1,35 @@
 import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from "semantic-ui-react";
+import cuid from 'cuid';
+
+interface attendeeData {
+    id: string;
+    name: string;
+    photoURL: string;
+}
+
+interface eventData {
+    id: string; 
+    title: string; 
+    date: string; 
+    category: string; 
+    description: string; 
+    city: string; 
+    venue: string; 
+    hostedBy: string; 
+    hostPhotoURL: string; 
+    attendees: attendeeData[]
+}
 
 interface eventFormProps {
     setFormOpen: Function;
     setEvents: Function;
+    createEvent: Function;
+    selectedEvent?: eventData;
 }
 
-export default function EventForm({setFormOpen, setEvents}: eventFormProps) {
-    const initialValues = {
+export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent}: eventFormProps) {
+    const initialValues = selectedEvent ?? {
         title: '',
         category: '',
         description: '',
@@ -20,7 +42,8 @@ export default function EventForm({setFormOpen, setEvents}: eventFormProps) {
    
 
     function handleFormSubmit() {
-        console.log(values)
+        createEvent({...values, id: cuid(), hostedBy: 'ToBeReplaced', attendees: [], hostPhotoURL: 'https://randomuser.me/api/portraits/men/7.jpg' });
+        setFormOpen(false);
     };
 
     function functionHandleInputChange(e: React.FormEvent<HTMLInputElement>) {

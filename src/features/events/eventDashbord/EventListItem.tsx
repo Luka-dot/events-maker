@@ -22,12 +22,13 @@ interface eventData {
 }
 
 interface singleEventProp {
-    singleEvent: eventData
+    singleEvent: eventData;
+    selectEvent: Function;
 }
 
 export default function EventListItem(props: singleEventProp) {
     const {...event}: eventData = props.singleEvent              //  const {event}: eventevent = props.singleEvent
- 
+    console.log(event);
     return (
         <Segment.Group>
             <Segment>
@@ -56,7 +57,7 @@ export default function EventListItem(props: singleEventProp) {
             </Segment>
             <Segment clearing>
                 <span>{event.description}</span>
-                <Button color='teal' floated='right' content='View' />
+                <Button color='teal' floated='right' content='View' onClick={() => props.selectEvent(event)} />
             </Segment>
         </Segment.Group>
     )
