@@ -28,7 +28,7 @@ interface singleEventProp {
 
 export default function EventListItem(props: singleEventProp) {
     const {...event}: eventData = props.singleEvent              //  const {event}: eventevent = props.singleEvent
-    console.log(event);
+
     return (
         <Segment.Group>
             <Segment>
@@ -62,3 +62,5 @@ export default function EventListItem(props: singleEventProp) {
         </Segment.Group>
     )
 };
+
+//  () => props.selectEvent(event)

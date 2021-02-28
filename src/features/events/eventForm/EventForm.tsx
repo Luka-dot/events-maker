@@ -25,7 +25,7 @@ interface eventFormProps {
     setFormOpen: Function;
     setEvents: Function;
     createEvent: Function;
-    selectedEvent?: eventData;
+    selectedEvent?: eventData | any;
 }
 
 export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent}: eventFormProps) {
