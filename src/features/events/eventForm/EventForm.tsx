@@ -26,9 +26,10 @@ interface eventFormProps {
     setEvents: Function;
     createEvent: Function;
     selectedEvent?: eventData | any;
+    updateEvent: Function;
 }
 
-export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent}: eventFormProps) {
+export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent, updateEvent}: eventFormProps) {
     const initialValues = selectedEvent ?? {
         title: '',
         category: '',
@@ -40,9 +41,14 @@ export default function EventForm({setFormOpen, setEvents, createEvent, selected
     
     const [values, setValues] = useState(initialValues);
    
-
     function handleFormSubmit() {
-        createEvent({...values, id: cuid(), hostedBy: 'ToBeReplaced', attendees: [], hostPhotoURL: 'https://randomuser.me/api/portraits/men/7.jpg' });
+        selectedEvent ? updateEvent({...selectedEvent, ...values}) 
+        : createEvent({
+            ...values, 
+            id: cuid(), 
+            hostedBy: 'ToBeReplaced', 
+            attendees: [], 
+            hostPhotoURL: 'https://randomuser.me/api/portraits/men/7.jpg' });
         setFormOpen(false);
     };
 
@@ -54,7 +60,7 @@ export default function EventForm({setFormOpen, setEvents, createEvent, selected
 
     return (
         <Segment clearing>
-            <Header content='Create new Event' />
+            <Header content={ !selectedEvent ? 'Create new Event' : 'Edit the Event'} />
             <Form onSubmit={handleFormSubmit} >
                 <Form.Field>
                     <input type='text' placeholder='Event title' onChange={(e) => functionHandleInputChange(e)} name='title' value={values.title} />

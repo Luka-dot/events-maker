@@ -34,9 +34,13 @@ function EventDashboard(props: eventDashboardProps) {
     const [events, setEvents] = useState(sampleData);
 
     function handleCreateEvent(event: eventData) {
-        setEvents([...events, event])
+        setEvents([...events, event]);
     };
-    console.log(props.selectEvent)
+    
+    function handleUpdateEvent(updatedEvent: eventData) {
+        setEvents(events.map((singleEvent) => singleEvent.id === updatedEvent.id ? updatedEvent : singleEvent));
+        props.selectEvent(null);
+    };
 
     return (
         <Grid>
@@ -50,7 +54,9 @@ function EventDashboard(props: eventDashboardProps) {
                     setFormOpen={props.setFormOpen} 
                     setEvents={setEvents} 
                     createEvent={handleCreateEvent} 
-                    selectedEvent={props.selectedEvent} />
+                    selectedEvent={props.selectedEvent} 
+                    updateEvent={handleUpdateEvent}
+                />
                 }
             </Grid.Column>
         </Grid>
