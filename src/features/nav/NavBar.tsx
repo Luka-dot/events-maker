@@ -4,12 +4,12 @@ import { Button, Container, Icon, Menu } from 'semantic-ui-react';
 import SigninMenu from './SigninMenu';
 import SignOutMenu from './SignOutMenu';
 
-interface navBarProps {
-    setFormOpen: Function; 
-    formOpen: Boolean;
-}
+// interface navBarProps {
+//     setFormOpen: Function; 
+//     formOpen: Boolean;
+// }
 
-export default function NavBar(props: navBarProps) {
+export default function NavBar() {
     const history = useHistory();
     const [authenticated, setAuthenticated] = useState(false);
 

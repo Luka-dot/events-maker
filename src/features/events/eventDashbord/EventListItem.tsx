@@ -24,7 +24,7 @@ interface eventData {
 
 interface singleEventProp {
     singleEvent: eventData;
-    selectEvent: Function;
+//    selectEvent: Function;
     deleteEvent: Function;
 }
 

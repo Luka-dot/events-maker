@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from "semantic-ui-react";
 import cuid from 'cuid';
+import { Link } from 'react-router-dom';
 
 interface attendeeData {
     id: string;
@@ -81,7 +82,7 @@ export default function EventForm({setFormOpen, setEvents, createEvent, selected
                     <input type='date' placeholder='Date' onChange={(e) => functionHandleInputChange(e)} name='date' value={values.date} />
                 </Form.Field>
                 <Button type='submitt' floated='right' positive content='Submit' />
-                <Button type='submitt' color='red' content='Cancel' onClick={() => setFormOpen(false)} />
+                <Button type='submitt' color='red' content='Cancel' as={Link} to='/events' />
             </Form>
         </Segment>
     )
