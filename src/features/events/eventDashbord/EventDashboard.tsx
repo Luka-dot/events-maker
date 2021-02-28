@@ -42,10 +42,14 @@ function EventDashboard(props: eventDashboardProps) {
         props.selectEvent(null);
     };
 
+    function handleDeleteEvent(eventToDelete: eventData) {
+        setEvents(events.filter((event) => event.id !== eventToDelete.id));
+    }
+
     return (
         <Grid>
             <Grid.Column width={10}>
-                <EventList events={events} selectEvent={props.selectEvent} />
+                <EventList events={events} selectEvent={props.selectEvent} deleteEvent={handleDeleteEvent} />
             </Grid.Column>
             <Grid.Column width={6}>
                 {props.formOpen && 

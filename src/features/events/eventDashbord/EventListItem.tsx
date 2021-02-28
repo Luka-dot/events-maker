@@ -24,6 +24,7 @@ interface eventData {
 interface singleEventProp {
     singleEvent: eventData;
     selectEvent: Function;
+    deleteEvent: Function;
 }
 
 export default function EventListItem(props: singleEventProp) {
@@ -57,6 +58,7 @@ export default function EventListItem(props: singleEventProp) {
             </Segment>
             <Segment clearing>
                 <span>{event.description}</span>
+                <Button color='red' floated='right' content='Delete' onClick={() => props.deleteEvent(event)} />
                 <Button color='teal' floated='right' content='View' onClick={() => props.selectEvent(event)} />
             </Segment>
         </Segment.Group>
