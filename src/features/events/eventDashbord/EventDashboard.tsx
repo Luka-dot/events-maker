@@ -19,7 +19,7 @@ function EventDashboard(props: eventDashboardProps) {
             </Grid.Column>
             <Grid.Column width={6}>
                 {props.formOpen && 
-                <EventForm setFormOpen={props.setFormOpen} />
+                <EventForm setFormOpen={props.setFormOpen} setEvents={setEvents} />
                 }
             </Grid.Column>
         </Grid>
