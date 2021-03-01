@@ -3,6 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { Button, Container, Icon, Menu } from 'semantic-ui-react';
 import SigninMenu from './SigninMenu';
 import SignOutMenu from './SignOutMenu';
+import { useSelector } from 'react-redux';
 
 // interface navBarProps {
 //     setFormOpen: Function; 
