@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from "semantic-ui-react";
 import cuid from 'cuid';
-import { Link } from 'react-router-dom';
+import { Link, match } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { createEvent, updateEvent } from '../../../app/store/action-creators/events';
 
 interface attendeeData {
     id: string;
@@ -23,14 +25,13 @@ interface eventData {
 }
 
 interface eventFormProps {
-    setFormOpen: Function;
-    setEvents: Function;
-    createEvent: Function;
-    selectedEvent?: eventData | any;
-    updateEvent: Function;
+    match: any;
 }
 
-export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent, updateEvent}: eventFormProps): JSX.Element {
+export default function EventForm({match}: eventFormProps): JSX.Element {
+    const dispatch = useDispatch();
+    const selectedEvent = useSelector((state: any) => state.event.events.find((e: eventData) => e.id === match.params.id))
+
     const initialValues = selectedEvent ?? {
         title: '',
         category: '',
@@ -43,14 +44,13 @@ export default function EventForm({setFormOpen, setEvents, createEvent, selected
     const [values, setValues] = useState(initialValues);
    
     function handleFormSubmit() {
-        selectedEvent ? updateEvent({...selectedEvent, ...values}) 
-        : createEvent({
+        selectedEvent ? dispatch(updateEvent({...selectedEvent, ...values})) 
+        : dispatch(createEvent({
             ...values, 
             id: cuid(), 
             hostedBy: 'ToBeReplaced', 
             attendees: [], 
-            hostPhotoURL: 'https://randomuser.me/api/portraits/men/7.jpg' });
-        setFormOpen(false);
+            hostPhotoURL: 'https://randomuser.me/api/portraits/men/7.jpg' }));
     };
 
     function functionHandleInputChange(e: React.FormEvent<HTMLInputElement>) {

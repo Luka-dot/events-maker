@@ -21,13 +21,15 @@ interface eventData {
 }
 
 interface propsToPass {
-    events: eventData[];
+    events:{ events: eventData[]};
     deleteEvent: Function;
 }
 
-export default function EventList(props: propsToPass): JSX.Element {
+export default function EventList(props: any): JSX.Element {
+    console.log(props.events)
     const renderEventList = () => {
-        return props.events.map((event: eventData) => {
+        return props.events.events.map((event: eventData) => {
+            console.log(' inside renderEventList ', event)
             return <EventListItem key={event.id} singleEvent={event} deleteEvent={props.deleteEvent} />
         })
     }

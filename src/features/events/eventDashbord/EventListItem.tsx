@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
+import { deleteEvent } from '../../../app/store/action-creators';
 import EventListAtendee from './EventListAttendee';
 
 interface attendeeData {
@@ -29,7 +31,9 @@ interface singleEventProp {
 }
 
 export default function EventListItem(props: singleEventProp): JSX.Element {
-    const {...event}: eventData = props.singleEvent              //  const {event}: eventevent = props.singleEvent
+    const {...event}: eventData = props.singleEvent;
+
+    const dispatch = useDispatch();
 
     return (
         <Segment.Group>
@@ -59,11 +63,9 @@ export default function EventListItem(props: singleEventProp): JSX.Element {
             </Segment>
             <Segment clearing>
                 <span>{event.description}</span>
-                <Button color='red' floated='right' content='Delete' onClick={() => props.deleteEvent(event)} />
+                <Button color='red' floated='right' content='Delete' onClick={() => dispatch(deleteEvent(event))} />
                 <Button color='teal' floated='right' content='View' as={Link} to={`/events/${event.id}`} />
             </Segment>
         </Segment.Group>
     )
 };
-
-//  () => props.selectEvent(event)   onClick={() => props.selectEvent(event)}

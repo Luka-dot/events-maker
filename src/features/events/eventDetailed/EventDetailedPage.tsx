@@ -33,10 +33,9 @@ type Props = {
 }
 
 export default function EventDetailedPage({match}: RouteComponentProps<Props>): JSX.Element {
-    console.log('match ', match)
-    const singleEvent = useSelector((state: RootState) => state.event.events.find((e: eventData) => e.id === match.params.id))
+    const singleEvent = useSelector((state: any) => state.event.events.find((e: eventData) => e.id === match.params.id))
 //    const find = useSelector((state: any) => state.event.events);
-    console.log('************ ',singleEvent)
+   
     return (
         <Grid>
             <Grid.Column width={10}>

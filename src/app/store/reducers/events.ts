@@ -25,12 +25,10 @@ interface EventsState {
     events: eventData[]
 };
 
-const initialState = {
-    events: sampleData
-};
+const initialState: any = { events: sampleData};
 
-export const eventReducer = (state: EventsState = initialState, {type, payload}: Action) =>{
-    console.log(state.events)
+export const eventReducer = (state = initialState, {type, payload}: Action) =>{
+    
     switch (type) {
         case ActionTypes.CREATE_EVENT:
             return {
@@ -40,12 +38,12 @@ export const eventReducer = (state: EventsState = initialState, {type, payload}:
         case ActionTypes.UPDATE_EVENT:
             return {
                 ...state,
-                events: [...state.events.filter(evt => evt.id !== payload.id), payload]
+                events: [...state.events.filter((evt: any) => evt.id !== payload.id), payload]
             }
         case ActionTypes.DELETE_EVENT:
             return {
                 ...state,
-                events: [...state.events.filter(evt => evt.id !== payload.id)]
+                events: [...state.events.filter((evt: any) => evt.id !== payload.id)]
             }
         default:
             return state

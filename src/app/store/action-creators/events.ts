@@ -6,7 +6,7 @@ interface attendeeData {
     photoURL: string;
 };
 
-interface eventData {
+export interface eventData {
     id: string; 
     title: string; 
     date: string; 

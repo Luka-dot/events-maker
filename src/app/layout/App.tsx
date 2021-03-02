@@ -8,7 +8,7 @@ import NavBar from '../../features/nav/NavBar';
 import HomePage from '../../features/home/HomePage';
 
 function App(): JSX.Element {
-
+  
   return (
     <>
       <Route exact path='/' component={HomePage} />

@@ -24,7 +24,7 @@ interface eventData {
 }
 
 interface eventDetailHeaderProps {
-    singleEvent: eventData
+    singleEvent: eventData | any
 }
 
 const eventImageStyle = {
@@ -40,7 +40,7 @@ const eventImageTextStyle = {
     color: 'white'
 };
 
-export default function EventDetailedHeader({singleEvent}: any): JSX.Element {
+export default function EventDetailedHeader({singleEvent}: eventDetailHeaderProps): JSX.Element {
 
     return (
         <Segment.Group>
@@ -70,7 +70,7 @@ export default function EventDetailedHeader({singleEvent}: any): JSX.Element {
         <Button>Cancel My Place</Button>
         <Button color="teal">JOIN THIS EVENT</Button>
 
-        <Button color="orange" floated="right" as={Link} to={`/manage`}>
+        <Button color="orange" floated="right" as={Link} to={`/manage/${singleEvent.id}`}>
             Manage Event
         </Button>
         </Segment>

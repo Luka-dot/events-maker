@@ -32,8 +32,8 @@ interface eventData {
 }
 
 function EventDashboard(): JSX.Element {
-    const events = useSelector((state: RootState) => state.event.events)
-    console.log('Events Dashboard ',events)
+    const events = useSelector((state: RootState) => state.event)
+    
     function handleDeleteEvent(eventToDelete: eventData) {
     //    setEvents(events.filter((event) => event.id !== eventToDelete.id));
     }
