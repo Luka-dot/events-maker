@@ -6,7 +6,7 @@ interface routerInterface {
     history: RouteComponentProps["history"];
 }
 
-export default function HomePage({history}: routerInterface) {
+export default function HomePage({history}: routerInterface): JSX.Element {
 
     return (
         <Segment inverted textAlign='center' vertical className='masthead'>

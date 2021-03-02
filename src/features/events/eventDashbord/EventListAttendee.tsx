@@ -11,7 +11,7 @@ interface attendeeData {
     photoURL: string;
 }
 
-export default function EventListAtendee(props: attendeeProps) {
+export default function EventListAtendee(props: attendeeProps): JSX.Element {
     const {...attendee}: attendeeData = props.attendeDetails;
 
     return (

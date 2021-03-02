@@ -5,7 +5,7 @@ interface signOutProps {
     setAuthenticated: Function;
 };
 
-export default function SignOutMenu({setAuthenticated}: signOutProps) {
+export default function SignOutMenu({setAuthenticated}: signOutProps): JSX.Element {
 
     return (
         <Menu.Item position='right'>

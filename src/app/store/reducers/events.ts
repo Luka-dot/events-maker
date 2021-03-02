@@ -1,14 +1,36 @@
 import { ActionTypes } from '../action-types/index';
 import { Action } from '../action-creators/index';
 
-//temp
 import {sampleData} from '../../api/sampleData';
+
+interface attendeeData {
+    id: string;
+    name: string;
+    photoURL: string;
+}
+
+interface eventData {
+    id: string; 
+    title: string; 
+    date: string; 
+    category: string; 
+    description: string; 
+    city: string; 
+    venue: string; 
+    hostedBy: string; 
+    hostPhotoURL: string; 
+    attendees: attendeeData[]
+}
+interface EventsState {
+    events: eventData[]
+};
 
 const initialState = {
     events: sampleData
 };
 
-export const eventReducer = (state = initialState, {type, payload}: Action) =>{
+export const eventReducer = (state: EventsState = initialState, {type, payload}: Action) =>{
+    console.log(state.events)
     switch (type) {
         case ActionTypes.CREATE_EVENT:
             return {

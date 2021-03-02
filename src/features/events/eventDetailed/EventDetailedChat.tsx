@@ -3,7 +3,7 @@ import { Segment, Comment, Header, Button, Form } from 'semantic-ui-react';
 
 import userImage from '../../../assests/user.png'
 
-export default function EventDetailedChat() {
+export default function EventDetailedChat(): JSX.Element {
 
     return (
         <>

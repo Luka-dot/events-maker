@@ -7,38 +7,7 @@ import EventForm from '../../features/events/eventForm/EventForm';
 import NavBar from '../../features/nav/NavBar';
 import HomePage from '../../features/home/HomePage';
 
-// interface attendeeData {
-//   id: string;
-//   name: string;
-//   photoURL: string;
-// }
-
-// interface eventData {
-//   id: string; 
-//   title: string; 
-//   date: string; 
-//   category: string; 
-//   description: string; 
-//   city: string; 
-//   venue: string; 
-//   hostedBy: string; 
-//   hostPhotoURL: string; 
-//   attendees: attendeeData[]
-// }
-
-function App() {
-  // const [formOpen, setFormOpen] = useState(false);
-  // const [selectedEvent, setSelectedEvent] = useState<any | eventData>(null);
-
-  // function handleSelectEvent(event: eventData) {
-  //   setSelectedEvent(event);
-  //   setFormOpen(true)
-  // };
-
-  // function handleCreateFormOpen() {
-  //   setSelectedEvent(null);
-  //   setFormOpen(true);
-  // }
+function App(): JSX.Element {
 
   return (
     <>

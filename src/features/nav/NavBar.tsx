@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 //     formOpen: Boolean;
 // }
 
-export default function NavBar() {
+export default function NavBar(): JSX.Element {
     const history = useHistory();
     const [authenticated, setAuthenticated] = useState(false);
 

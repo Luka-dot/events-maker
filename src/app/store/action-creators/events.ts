@@ -1,16 +1,12 @@
 import { ActionTypes } from '../action-types/index';
 
-export interface attendeeData {
+interface attendeeData {
     id: string;
     name: string;
     photoURL: string;
 };
 
-export interface eventIdIntf {
-    id: string
-}
-
-export interface eventData {
+interface eventData {
     id: string; 
     title: string; 
     date: string; 
@@ -35,10 +31,8 @@ export interface UpdateEventAction {
 
 export interface DeleteEventAction {
     type: ActionTypes.DELETE_EVENT;
-    payload: eventIdIntf
+    payload: eventData
 };
-
-// ***************************************************************** //
 
 export const createEvent = (event: eventData): CreateEventAction => {
     return {
@@ -54,9 +48,9 @@ export const updateEvent = (event: eventData): UpdateEventAction => {
     }
 };
 
-export const deleteEvent = (eventId: eventIdIntf): DeleteEventAction => {
+export const deleteEvent = (event: eventData): DeleteEventAction => {
     return {
         type: ActionTypes.DELETE_EVENT,
-        payload: eventId
+        payload: event
     }
 };

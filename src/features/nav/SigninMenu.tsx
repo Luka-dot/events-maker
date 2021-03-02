@@ -6,7 +6,7 @@ interface signinProps {
     signOut: Function;
 };
 
-export default function SigninMenu({signOut}: signinProps) {
+export default function SigninMenu({signOut}: signinProps): JSX.Element {
 
     return (
         <Menu.Item position='right'>

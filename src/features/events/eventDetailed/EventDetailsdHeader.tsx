@@ -4,6 +4,29 @@ import { Segment, Item, Header, Button, Image } from 'semantic-ui-react';
 
 import drinksImage from '../../../assests/drinks.jpg';
 
+interface attendeeData {
+    id: string;
+    name: string;
+    photoURL: string;
+}
+
+interface eventData {
+    id: string; 
+    title: string; 
+    date: string; 
+    category: string; 
+    description: string; 
+    city: string; 
+    venue: string; 
+    hostedBy: string; 
+    hostPhotoURL: string; 
+    attendees?: attendeeData[]
+}
+
+interface eventDetailHeaderProps {
+    singleEvent: eventData
+}
+
 const eventImageStyle = {
     filter: 'brightness(30%)'
 };
@@ -17,7 +40,7 @@ const eventImageTextStyle = {
     color: 'white'
 };
 
-export default function EventDetailedHeader() {
+export default function EventDetailedHeader({singleEvent}: any): JSX.Element {
 
     return (
         <Segment.Group>
@@ -30,12 +53,12 @@ export default function EventDetailedHeader() {
                     <Item.Content>
                         <Header
                             size="huge"
-                            content='Event Title'
+                            content={singleEvent.title}
                             style={{color: 'white'}}
                         />
-                        <p>Event Date</p>
+                        <p>{singleEvent.date}</p>
                         <p>
-                            Hosted by <strong>Bob</strong>
+                            Hosted by <strong>{singleEvent.hostedBy}</strong>
                         </p>
                     </Item.Content>
                 </Item>

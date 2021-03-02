@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import EventList from './EventList';
-import { sampleData } from '../../../app/api/sampleData';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../app/store/reducers';
 
-interface eventDashboardProps {
-    setFormOpen: Function;
-    formOpen: Boolean;
-    selectEvent: Function;
-    selectedEvent?: eventData;
-}
+// interface eventDashboardProps {
+//     setFormOpen: Function;
+//     formOpen: Boolean;
+//     selectEvent: Function;
+//     selectedEvent?: eventData;
+//     events: eventData[];
+// }
 
 interface attendeeData {
     id: string;
@@ -29,20 +31,11 @@ interface eventData {
     attendees: attendeeData[]
 }
 
-function EventDashboard(props: eventDashboardProps) {
-    const [events, setEvents] = useState(sampleData);
-
-    // function handleCreateEvent(event: eventData) {
-    //     setEvents([...events, event]);
-    // };
-    
-    // function handleUpdateEvent(updatedEvent: eventData) {
-    //     setEvents(events.map((singleEvent) => singleEvent.id === updatedEvent.id ? updatedEvent : singleEvent));
-    // //    props.selectEvent(null);
-    // };
-
+function EventDashboard(): JSX.Element {
+    const events = useSelector((state: RootState) => state.event.events)
+    console.log('Events Dashboard ',events)
     function handleDeleteEvent(eventToDelete: eventData) {
-        setEvents(events.filter((event) => event.id !== eventToDelete.id));
+    //    setEvents(events.filter((event) => event.id !== eventToDelete.id));
     }
 
     return (
@@ -59,15 +52,3 @@ function EventDashboard(props: eventDashboardProps) {
 
 export default EventDashboard
 
-/*
-{props.formOpen && 
-    <EventForm
-        key={props.selectEvent ? props.selectedEvent?.id : null}
-        setFormOpen={props.setFormOpen} 
-        setEvents={setEvents} 
-        createEvent={handleCreateEvent} 
-        selectedEvent={props.selectedEvent} 
-        updateEvent={handleUpdateEvent}
-    />
-    }
-    */

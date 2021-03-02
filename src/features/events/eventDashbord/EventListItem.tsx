@@ -28,7 +28,7 @@ interface singleEventProp {
     deleteEvent: Function;
 }
 
-export default function EventListItem(props: singleEventProp) {
+export default function EventListItem(props: singleEventProp): JSX.Element {
     const {...event}: eventData = props.singleEvent              //  const {event}: eventevent = props.singleEvent
 
     return (

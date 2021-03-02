@@ -30,7 +30,7 @@ interface eventFormProps {
     updateEvent: Function;
 }
 
-export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent, updateEvent}: eventFormProps) {
+export default function EventForm({setFormOpen, setEvents, createEvent, selectedEvent, updateEvent}: eventFormProps): JSX.Element {
     const initialValues = selectedEvent ?? {
         title: '',
         category: '',

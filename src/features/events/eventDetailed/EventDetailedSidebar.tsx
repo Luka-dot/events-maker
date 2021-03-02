@@ -3,7 +3,7 @@ import { Segment, Item } from 'semantic-ui-react';
 
 import userImage from '../../../assests/user.png'
 
-export default function EventDetailedSidebar() {
+export default function EventDetailedSidebar({attendees}: any): JSX.Element {
 
     return (
         <>
@@ -15,26 +15,20 @@ export default function EventDetailedSidebar() {
             inverted
             color="teal"
         >
-            2 People Going
+            {attendees.length} {attendees.length >1 ? 'People' : 'Person'} Going
         </Segment>
         <Segment attached>
             <Item.Group relaxed divided>
-                <Item style={{position: 'relative'}}>
-                    <Item.Image size="tiny" src={userImage}/>
+                {attendees.map((attendee: any) => (
+                    <Item key={attendee.id} style={{position: 'relative'}}>
+                    <Item.Image size="tiny" src={attendee.photoURL || userImage}/>
                     <Item.Content verticalAlign="middle">
                         <Item.Header as="h3">
-                            <span>Tom</span>
+                            <span>{attendee.name}</span>
                         </Item.Header>
                     </Item.Content>
                 </Item>
-                <Item style={{position: 'relative'}}>
-                    <Item.Image size="tiny" src={userImage}/>
-                    <Item.Content verticalAlign="middle">
-                        <Item.Header as="h3">
-                            <span>Bob</span>
-                        </Item.Header>
-                    </Item.Content>
-                </Item>
+                ))}  
             </Item.Group>
         </Segment>
         </>
