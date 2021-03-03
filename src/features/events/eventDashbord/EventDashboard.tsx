@@ -33,15 +33,11 @@ interface eventData {
 
 function EventDashboard(): JSX.Element {
     const events = useSelector((state: RootState) => state.event)
-    
-    function handleDeleteEvent(eventToDelete: eventData) {
-    //    setEvents(events.filter((event) => event.id !== eventToDelete.id));
-    }
 
     return (
         <Grid>
             <Grid.Column width={10}>
-                <EventList events={events} deleteEvent={handleDeleteEvent} />
+                <EventList events={events} />
             </Grid.Column>
             <Grid.Column width={6}>
                 <h2>Event Filters</h2>

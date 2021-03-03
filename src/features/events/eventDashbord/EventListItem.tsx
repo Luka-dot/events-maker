@@ -26,8 +26,6 @@ interface eventData {
 
 interface singleEventProp {
     singleEvent: eventData;
-//    selectEvent: Function;
-    deleteEvent: Function;
 }
 
 export default function EventListItem(props: singleEventProp): JSX.Element {

@@ -26,9 +26,10 @@ interface eventData {
 
 interface eventFormProps {
     match: any;
+    history: any;
 }
 
-export default function EventForm({match}: eventFormProps): JSX.Element {
+export default function EventForm({match, history}: eventFormProps): JSX.Element {
     const dispatch = useDispatch();
     const selectedEvent = useSelector((state: any) => state.event.events.find((e: eventData) => e.id === match.params.id))
 
@@ -51,6 +52,7 @@ export default function EventForm({match}: eventFormProps): JSX.Element {
             hostedBy: 'ToBeReplaced', 
             attendees: [], 
             hostPhotoURL: 'https://randomuser.me/api/portraits/men/7.jpg' }));
+        history.push('/events');
     };
 
     function functionHandleInputChange(e: React.FormEvent<HTMLInputElement>) {
