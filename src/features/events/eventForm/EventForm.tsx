@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Form, Header, Segment } from "semantic-ui-react";
+import { Button, Header, Segment, FormField } from "semantic-ui-react";
 import cuid from 'cuid';
 import { Link, match, RouteComponentProps  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createEvent, updateEvent } from '../../../app/store/action-creators/events';
+import { Formik, Form, Field } from 'formik';
 
 interface attendeeData {
     id: string;
@@ -65,28 +66,36 @@ export default function EventForm({match, history}: RouteComponentProps<eventFor
     return (
         <Segment clearing>
             <Header content={ !selectedEvent ? 'Create new Event' : 'Edit the Event'} />
-            <Form onSubmit={handleFormSubmit} >
-                <Form.Field>
-                    <input type='text' placeholder='Event title' onChange={(e) => functionHandleInputChange(e)} name='title' value={values.title} />
-                </Form.Field>
-                <Form.Field>
-                    <input type='text' placeholder='Category' onChange={(e) => functionHandleInputChange(e)} name='category' value={values.category} />
-                </Form.Field>
-                <Form.Field>
-                    <input type='text' placeholder='Description' onChange={(e) => functionHandleInputChange(e)} name='description' value={values.description} />
-                </Form.Field>
-                <Form.Field>
-                    <input type='text' placeholder='City' onChange={(e) => functionHandleInputChange(e)} name='city' value={values.city} />
-                </Form.Field>
-                <Form.Field>
-                    <input type='text' placeholder='Venue' onChange={(e) => functionHandleInputChange(e)} name='venue' value={values.venue} />
-                </Form.Field>
-                <Form.Field>
-                    <input type='date' placeholder='Date' onChange={(e) => functionHandleInputChange(e)} name='date' value={values.date} />
-                </Form.Field>
+            <Formik
+                initialValues={initialValues}
+                onSubmit={values => console.log(values)}
+            >
+                <Form className="ui form" >
+                <FormField>
+                    <Field name='title' placeholder='Title' />
+                </FormField>
+                <FormField>
+                    <Field name='category' placeholder='Category' />
+                </FormField>
+                <FormField>
+                    <Field name='description' placeholder='Description' />
+                </FormField>
+                <FormField>
+                    <Field name='city' placeholder='City' />
+                </FormField>
+                <FormField>
+                    <Field name='venue' placeholder='Venue' />
+                </FormField>
+                <FormField>
+                    <Field name='date' placeholder='Date' type='date' />
+                </FormField>
+                
                 <Button type='submitt' floated='right' positive content='Submit' />
                 <Button type='submitt' color='red' content='Cancel' as={Link} to='/events' />
             </Form>
+                
+            </Formik>
+            
         </Segment>
     )
 };
