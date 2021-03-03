@@ -25,10 +25,8 @@ interface propsToPass {
 }
 
 export default function EventList(props: any): JSX.Element {
-    console.log(props)
     const renderEventList = () => {
         return props.events.events.map((event: eventData) => {
-            console.log(' inside renderEventList ', event)
             return <EventListItem key={event.id} singleEvent={event} />
         })
     }

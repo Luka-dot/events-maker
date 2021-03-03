@@ -3,7 +3,17 @@ import { Segment, Item } from 'semantic-ui-react';
 
 import userImage from '../../../assests/user.png'
 
-export default function EventDetailedSidebar({attendees}: any): JSX.Element {
+interface attendeeData {
+    id: string;
+    name: string;
+    photoURL: string;
+};
+
+interface AttendeeProps {
+    attendees: attendeeData[]
+};
+
+export default function EventDetailedSidebar({attendees}: AttendeeProps): JSX.Element {
 
     return (
         <>

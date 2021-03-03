@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { RouteComponentProps } from "react-router-dom";
 import { Grid } from 'semantic-ui-react';
 
-import { RootState } from '../../../app/store/reducers';
 import EventDetailedChat from './EventDetailedChat';
 import EventDetailedInfo from './EventDetailedInfo';
 import EventDetailedSidebar from './EventDetailedSidebar';

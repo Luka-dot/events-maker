@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from "semantic-ui-react";
 import cuid from 'cuid';
-import { Link, match } from 'react-router-dom';
+import { Link, match, RouteComponentProps  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createEvent, updateEvent } from '../../../app/store/action-creators/events';
 
@@ -24,14 +24,15 @@ interface eventData {
     attendees: attendeeData[]
 }
 
-interface eventFormProps {
+interface eventFormProps  {
     match: any;
     history: any;
+    id: any;
 }
 
-export default function EventForm({match, history}: eventFormProps): JSX.Element {
+export default function EventForm({match, history}: RouteComponentProps<eventFormProps>): JSX.Element {
     const dispatch = useDispatch();
-    const selectedEvent = useSelector((state: any) => state.event.events.find((e: eventData) => e.id === match.params.id))
+    const selectedEvent = useSelector((state: any) => state.event.events.find((e: eventData) => e.id === match.params.id));
 
     const initialValues = selectedEvent ?? {
         title: '',

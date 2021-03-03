@@ -1,7 +1,30 @@
 import React from 'react';
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
 
-export default function EventDetailedInfo({singleEvent}: any): JSX.Element {
+interface attendeeData {
+    id: string;
+    name: string;
+    photoURL: string;
+};
+
+interface eventData {
+    id: string; 
+    title: string; 
+    date: string; 
+    category: string; 
+    description: string; 
+    city: string; 
+    venue: string; 
+    hostedBy: string; 
+    hostPhotoURL: string; 
+    attendees: attendeeData[]
+};
+
+interface EventDetailedProp {
+    singleEvent: eventData;
+};
+
+export default function EventDetailedInfo({singleEvent}: EventDetailedProp): JSX.Element {
 
     return (
         <Segment.Group>
