@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createEvent, updateEvent } from '../../../app/store/action-creators/events';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import MyTextInput from '../../../app/shared/form/MyTextInputs';
 
 interface attendeeData {
     id: string;
@@ -69,10 +70,7 @@ export default function EventForm({match, history}: RouteComponentProps<eventFor
                 onSubmit={values => console.log(values)}
             >
                 <Form className="ui form" >
-                <FormField>
-                    <Field name='title' placeholder='Title' />
-                    <ErrorMessage name='title' render={error => <Label basic color='red' content={error} />} />
-                </FormField>
+                <MyTextInput name='title' placeholder='Event title' />
                 <FormField>
                     <Field name='category' placeholder='Category' />
                 </FormField>
