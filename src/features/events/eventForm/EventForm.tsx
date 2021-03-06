@@ -7,6 +7,10 @@ import { createEvent, updateEvent } from '../../../app/store/action-creators/eve
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/shared/form/MyTextInputs';
+import MyTextArea from '../../../app/shared/form/MyTextArea';
+import MySelectInput from '../../../app/shared/form/MySelectInput';
+import { categoryData } from '../../../app/api/categoryOptions';
+import MyDateInput from '../../../app/shared/form/myDateInput';
 
 interface attendeeData {
     id: string;
@@ -74,8 +78,8 @@ export default function EventForm({match, history}: RouteComponentProps<eventFor
             >
                 <Form className="ui form" >
                 <MyTextInput name='title' placeholder='Event title' />
-                <MyTextInput name='category' placeholder='Category' />
-                <MyTextInput name='description' placeholder='Description' />
+                <MySelectInput name='category' placeholder='Category' options={categoryData} />
+                <MyTextArea name='description' placeholder='Description' rows={5}/>
                 <Header sub color='teal' content='Event Location' />
                 <MyTextInput name='city' placeholder='City' />
                 <MyTextInput name='venue' placeholder='Venue' />
