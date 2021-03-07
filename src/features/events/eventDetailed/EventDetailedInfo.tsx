@@ -1,5 +1,6 @@
 import React from 'react';
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
+import { format } from 'date-fns'
 
 interface attendeeData {
     id: string;
@@ -10,7 +11,7 @@ interface attendeeData {
 interface eventData {
     id: string; 
     title: string; 
-    date: string; 
+    date: number; 
     category: string; 
     description: string; 
     city: string; 
@@ -44,7 +45,7 @@ export default function EventDetailedInfo({singleEvent}: EventDetailedProp): JSX
                         <Icon name="calendar" size="large" color="teal"/>
                     </Grid.Column>
                     <Grid.Column width={15}>
-                        <span>{singleEvent.date}</span>
+                        <span>{format(singleEvent.date, 'MMMM d, yyyy h:m a')}</span>
                     </Grid.Column>
                 </Grid>
             </Segment>

@@ -76,18 +76,42 @@ export default function EventForm({match, history}: RouteComponentProps<eventFor
                     history.push('/events');
                 }}
             >
-                <Form className="ui form" >
-                <MyTextInput name='title' placeholder='Event title' />
-                <MySelectInput name='category' placeholder='Category' options={categoryData} />
-                <MyTextArea name='description' placeholder='Description' rows={5}/>
-                <Header sub color='teal' content='Event Location' />
-                <MyTextInput name='city' placeholder='City' />
-                <MyTextInput name='venue' placeholder='Venue' />
-                <MyTextInput name='date' placeholder='Date' type='date' />
+                {({ isSubmitting, dirty, isValid }) => (
+                    <Form className="ui form" >
+                    <MyTextInput name='title' placeholder='Event title' />
+                    <MySelectInput name='category' placeholder='Category' options={categoryData} />
+                    <MyTextArea name='description' placeholder='Description' rows={5}/>
+                    <Header sub color='teal' content='Event Location' />
+                    <MyTextInput name='city' placeholder='City' />
+                    <MyTextInput name='venue' placeholder='Venue' />               
+                    <MyDateInput 
+                        name="date" 
+                        placeholderText="Event Date" 
+                        timeFormat="HH:mm"
+                        showTimeSelect
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:m a"
+                    />
+                    
+                    <Button 
+                        loading={isSubmitting} 
+                        disabled={!isValid || !dirty || isSubmitting}
+                        type='submitt' floated='right' 
+                        positive 
+                        content='Submit' 
+
+                    />
+                    <Button 
+                        type='submitt' 
+                        color='red' 
+                        disabled={isSubmitting}
+                        content='Cancel' 
+                        as={Link} to='/events' 
+                    
+                    />
+                </Form>
+                )}
                 
-                <Button type='submitt' floated='right' positive content='Submit' />
-                <Button type='submitt' color='red' content='Cancel' as={Link} to='/events' />
-            </Form>
                 
             </Formik>
             

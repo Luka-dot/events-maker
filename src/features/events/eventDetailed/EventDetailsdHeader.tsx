@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Segment, Item, Header, Button, Image } from 'semantic-ui-react';
+import { format } from 'date-fns';
 
 import drinksImage from '../../../assests/drinks.jpg';
 
@@ -56,7 +57,7 @@ export default function EventDetailedHeader({singleEvent}: eventDetailHeaderProp
                             content={singleEvent.title}
                             style={{color: 'white'}}
                         />
-                        <p>{singleEvent.date}</p>
+                        <p>{format(singleEvent.date, 'MMMM d, yyyy h:m a')}</p>
                         <p>
                             Hosted by <strong>{singleEvent.hostedBy}</strong>
                         </p>
